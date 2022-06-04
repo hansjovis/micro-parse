@@ -1,0 +1,14 @@
+{
+  "name": "micro-parse",
+  "version": "1.0.0-alpha.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "docs": "jsdoc2md './src/**' > docs/readme.md"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0",
+    "jsdoc-to-markdown": "^7.1.1"
+  }
+}
