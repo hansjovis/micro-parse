@@ -6,7 +6,7 @@ It is hobby project, made in a few days to hone my own JavaScript skills, so use
 
 ## Examples
 
-#### Getting the text of all paragraphs within a document
+### Getting the text of all paragraphs within a document
 ```js
 const { parse } = require( "micro-parse/parse" );
 const { findAll, innerText } = require( "micro-parse/traverse" );
