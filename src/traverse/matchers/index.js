@@ -1,4 +1,6 @@
-import withTag from "./withTag";
+const withTag = require( "./withTag" );
+const withAttribute = require( "./withAttribute" );
+const hasAttribute = require( "./hasAttribute" );
 
 /**
  * Match functions.
@@ -6,6 +8,8 @@ import withTag from "./withTag";
  * @module traverse/matchers
  */
 
-export {
-	withTag
+module.exports = {
+	withTag,
+	withAttribute,
+	hasAttribute,
 };

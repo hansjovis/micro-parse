@@ -144,6 +144,39 @@ from the given node.
 ## traverse/matchers
 Match functions.
 
+
+* [traverse/matchers](#module_traverse/matchers)
+    * [.hasAttribute(attribute)](#module_traverse/matchers.hasAttribute) ⇒ <code>function</code>
+    * [.withAttribute(attribute, value)](#module_traverse/matchers.withAttribute) ⇒ <code>function</code>
+    * [.withTag(tag)](#module_traverse/matchers.withTag) ⇒ <code>function</code>
+
+<a name="module_traverse/matchers.hasAttribute"></a>
+
+### traverse/matchers.hasAttribute(attribute) ⇒ <code>function</code>
+Returns a matcher function that checks whether a node
+has a given attribute.
+
+**Kind**: static method of [<code>traverse/matchers</code>](#module_traverse/matchers)  
+**Returns**: <code>function</code> - A function that checks whether the node has the give attribute.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attribute | <code>string</code> | The name of the attribute to check. |
+
+<a name="module_traverse/matchers.withAttribute"></a>
+
+### traverse/matchers.withAttribute(attribute, value) ⇒ <code>function</code>
+Returns a matcher function that checks whether a node has an attribute with
+the given value.
+
+**Kind**: static method of [<code>traverse/matchers</code>](#module_traverse/matchers)  
+**Returns**: <code>function</code> - A function that returns `true` if the attribute has the given value.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| attribute | <code>string</code> | The name of the attribute to check. |
+| value | <code>string</code> | The value this attribute should have. |
+
 <a name="module_traverse/matchers.withTag"></a>
 
 ### traverse/matchers.withTag(tag) ⇒ <code>function</code>

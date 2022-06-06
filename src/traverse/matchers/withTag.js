@@ -12,4 +12,4 @@ function withTag( tag ) {
 	return node => node.tag === tag;
 }
 
-export default withTag;
+module.exports = withTag;
