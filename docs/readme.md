@@ -110,6 +110,7 @@ an HTML-tree.
 
 * [traverse](#module_traverse)
     * [.findAll(tree, condition)](#module_traverse.findAll) ⇒ [<code>Array.&lt;HTMLNode&gt;</code>](#module_parse.HTMLNode)
+    * [.findOne(tree, condition)](#module_traverse.findOne) ⇒ [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) \| <code>null</code>
     * [.innerText(node)](#module_traverse.innerText) ⇒ <code>string</code>
 
 <a name="module_traverse.findAll"></a>
@@ -124,7 +125,20 @@ and returns those nodes in an array.
 | Param | Type | Description |
 | --- | --- | --- |
 | tree | [<code>HTMLNode</code>](#module_parse.HTMLNode) | The tree. |
-| condition | <code>function</code> | The condition, should map an `HTMLNode` to either `true` or `false`. |
+| condition | [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) | The condition, should map an `HTMLNode` to either `true` or `false`. |
+
+<a name="module_traverse.findOne"></a>
+
+### traverse.findOne(tree, condition) ⇒ [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) \| <code>null</code>
+Finds and returns the first node in the tree that satisfies the given
+condition.
+
+**Kind**: static method of [<code>traverse</code>](#module_traverse)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| tree | [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) | The tree. |
+| condition | [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) | The condition. |
 
 <a name="module_traverse.innerText"></a>
 
@@ -146,18 +160,19 @@ Match functions.
 
 
 * [traverse/matchers](#module_traverse/matchers)
-    * [.hasAttribute(attribute)](#module_traverse/matchers.hasAttribute) ⇒ <code>function</code>
-    * [.withAttribute(attribute, value)](#module_traverse/matchers.withAttribute) ⇒ <code>function</code>
-    * [.withTag(tag)](#module_traverse/matchers.withTag) ⇒ <code>function</code>
+    * [.hasAttribute(attribute)](#module_traverse/matchers.hasAttribute) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
+    * [.withAttribute(attribute, value)](#module_traverse/matchers.withAttribute) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
+    * [.withTag(tag)](#module_traverse/matchers.withTag) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
+    * [.MatchFunction](#module_traverse/matchers.MatchFunction) ⇒ <code>Boolean</code>
 
 <a name="module_traverse/matchers.hasAttribute"></a>
 
-### traverse/matchers.hasAttribute(attribute) ⇒ <code>function</code>
+### traverse/matchers.hasAttribute(attribute) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
 Returns a matcher function that checks whether a node
 has a given attribute.
 
 **Kind**: static method of [<code>traverse/matchers</code>](#module_traverse/matchers)  
-**Returns**: <code>function</code> - A function that checks whether the node has the give attribute.  
+**Returns**: [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) - A function that checks whether the node has the give attribute.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -165,12 +180,12 @@ has a given attribute.
 
 <a name="module_traverse/matchers.withAttribute"></a>
 
-### traverse/matchers.withAttribute(attribute, value) ⇒ <code>function</code>
+### traverse/matchers.withAttribute(attribute, value) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
 Returns a matcher function that checks whether a node has an attribute with
 the given value.
 
 **Kind**: static method of [<code>traverse/matchers</code>](#module_traverse/matchers)  
-**Returns**: <code>function</code> - A function that returns `true` if the attribute has the given value.  
+**Returns**: [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) - A function that returns `true` if the attribute has the given value.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -179,14 +194,26 @@ the given value.
 
 <a name="module_traverse/matchers.withTag"></a>
 
-### traverse/matchers.withTag(tag) ⇒ <code>function</code>
+### traverse/matchers.withTag(tag) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
 Returns a matcher function that checks whether a node
 has a given tag.
 
 **Kind**: static method of [<code>traverse/matchers</code>](#module_traverse/matchers)  
-**Returns**: <code>function</code> - The matcher function.  
+**Returns**: [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) - The matcher function.  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | tag | <code>string</code> | The tag to check. For example "p" for paragraphs. |
+
+<a name="module_traverse/matchers.MatchFunction"></a>
+
+### traverse/matchers.MatchFunction ⇒ <code>Boolean</code>
+A match function that maps a node in the tree to either `true` or `false`.
+
+**Kind**: static typedef of [<code>traverse/matchers</code>](#module_traverse/matchers)  
+**Returns**: <code>Boolean</code> - Whether the node matches according to this match function.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| node | [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) \| <code>null</code> | The node to check. |
 

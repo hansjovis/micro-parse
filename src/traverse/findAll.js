@@ -5,7 +5,7 @@
  * @memberOf module:traverse
  *
  * @param {module:parse.HTMLNode} tree The tree.
- * @param { function(module:parse.HTMLNode): Boolean } condition The condition, should map an `HTMLNode` to either `true` or `false`.
+ * @param {module:traverse/matchers.MatchFunction} condition The condition, should map an `HTMLNode` to either `true` or `false`.
  *
  * @return {module:parse.HTMLNode[]} The array of nodes in the tree that satisfy the condition.
  */

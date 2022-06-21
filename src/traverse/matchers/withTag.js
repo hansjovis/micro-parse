@@ -6,7 +6,7 @@
  *
  * @param {string} tag The tag to check. For example "p" for paragraphs.
  *
- * @return {function(module:parse.HTMLNode): boolean} The matcher function.
+ * @return {module:traverse/matchers.MatchFunction} The matcher function.
  */
 function withTag( tag ) {
 	return node => node.tag === tag;
