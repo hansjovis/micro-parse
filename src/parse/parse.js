@@ -1,5 +1,5 @@
-import tokenize from "./tokenize";
-import buildTree from "./buildTree";
+const tokenize = require( "./tokenize" );
+const buildTree = require( "./buildTree" );
 
 /**
  * Parses the given HTML-string to a tree representation.
