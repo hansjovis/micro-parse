@@ -1,6 +1,9 @@
 ## Modules
 
 <dl>
+<dt><a href="#module_model">model</a></dt>
+<dd><p>This module contains the building blocks of an HTML tree.</p>
+</dd>
 <dt><a href="#module_parse">parse</a></dt>
 <dd><p>The parse module.</p>
 </dd>
@@ -13,25 +16,151 @@ an HTML-tree.</p>
 </dd>
 </dl>
 
+<a name="module_model"></a>
+
+## model
+This module contains the building blocks of an HTML tree.
+
+
+* [model](#module_model)
+    * [.CommentNode](#module_model.CommentNode)
+        * [new CommentNode(contents)](#new_module_model.CommentNode_new)
+        * [.contents](#module_model.CommentNode+contents) : <code>string</code>
+    * [.InnerNode](#module_model.InnerNode)
+        * [new InnerNode(tag, [attributes], [children])](#new_module_model.InnerNode_new)
+        * [.tag](#module_model.InnerNode+tag) : <code>string</code>
+        * [.attributes](#module_model.InnerNode+attributes) : <code>object</code>
+        * [.children](#module_model.InnerNode+children) : [<code>Array.&lt;Node&gt;</code>](#module_model.Node)
+    * [.LeafNode](#module_model.LeafNode)
+    * [.Node](#module_model.Node)
+        * [.type](#module_model.Node+type) : <code>string</code>
+    * [.TextNode](#module_model.TextNode)
+        * [new TextNode(contents)](#new_module_model.TextNode_new)
+        * [.contents](#module_model.TextNode+contents) : <code>string</code>
+
+<a name="module_model.CommentNode"></a>
+
+### model.CommentNode
+A comment leaf node.
+
+**Kind**: static class of [<code>model</code>](#module_model)  
+
+* [.CommentNode](#module_model.CommentNode)
+    * [new CommentNode(contents)](#new_module_model.CommentNode_new)
+    * [.contents](#module_model.CommentNode+contents) : <code>string</code>
+
+<a name="new_module_model.CommentNode_new"></a>
+
+#### new CommentNode(contents)
+Creates a new comment node.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| contents | <code>string</code> | The comment node's contents. |
+
+<a name="module_model.CommentNode+contents"></a>
+
+#### commentNode.contents : <code>string</code>
+The contents of this comment node.
+
+**Kind**: instance property of [<code>CommentNode</code>](#module_model.CommentNode)  
+<a name="module_model.InnerNode"></a>
+
+### model.InnerNode
+An internal node in the tree.
+
+**Kind**: static class of [<code>model</code>](#module_model)  
+
+* [.InnerNode](#module_model.InnerNode)
+    * [new InnerNode(tag, [attributes], [children])](#new_module_model.InnerNode_new)
+    * [.tag](#module_model.InnerNode+tag) : <code>string</code>
+    * [.attributes](#module_model.InnerNode+attributes) : <code>object</code>
+    * [.children](#module_model.InnerNode+children) : [<code>Array.&lt;Node&gt;</code>](#module_model.Node)
+
+<a name="new_module_model.InnerNode_new"></a>
+
+#### new InnerNode(tag, [attributes], [children])
+Create a new inner node.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| tag | <code>string</code> | The tag of the node, e.g. `p` for paragraphs or `h2` for level 2 headings. |
+| [attributes] | <code>object</code> | This node's attributes. |
+| [children] | [<code>Array.&lt;Node&gt;</code>](#module_model.Node) | The children of this node. |
+
+<a name="module_model.InnerNode+tag"></a>
+
+#### innerNode.tag : <code>string</code>
+The tag of the node, e.g. `p` for paragraphs or `h2` for level 2 headings.
+
+**Kind**: instance property of [<code>InnerNode</code>](#module_model.InnerNode)  
+<a name="module_model.InnerNode+attributes"></a>
+
+#### innerNode.attributes : <code>object</code>
+attributes The attributes of the node as a key-value map of strings.
+
+**Kind**: instance property of [<code>InnerNode</code>](#module_model.InnerNode)  
+<a name="module_model.InnerNode+children"></a>
+
+#### innerNode.children : [<code>Array.&lt;Node&gt;</code>](#module_model.Node)
+The children of the node.
+
+**Kind**: instance property of [<code>InnerNode</code>](#module_model.InnerNode)  
+<a name="module_model.LeafNode"></a>
+
+### model.LeafNode
+**Kind**: static class of [<code>model</code>](#module_model)  
+<a name="module_model.Node"></a>
+
+### model.Node
+**Kind**: static class of [<code>model</code>](#module_model)  
+<a name="module_model.Node+type"></a>
+
+#### node.type : <code>string</code>
+The type of node.
+
+**Kind**: instance property of [<code>Node</code>](#module_model.Node)  
+<a name="module_model.TextNode"></a>
+
+### model.TextNode
+A text leaf node.
+
+**Kind**: static class of [<code>model</code>](#module_model)  
+
+* [.TextNode](#module_model.TextNode)
+    * [new TextNode(contents)](#new_module_model.TextNode_new)
+    * [.contents](#module_model.TextNode+contents) : <code>string</code>
+
+<a name="new_module_model.TextNode_new"></a>
+
+#### new TextNode(contents)
+Creates a new text node.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| contents | <code>string</code> | The text contents. |
+
+<a name="module_model.TextNode+contents"></a>
+
+#### textNode.contents : <code>string</code>
+The text contents of this node.
+
+**Kind**: instance property of [<code>TextNode</code>](#module_model.TextNode)  
 <a name="module_parse"></a>
 
 ## parse
 The parse module.
 
-
-* [parse](#module_parse)
-    * [.parse(htmlString)](#module_parse.parse) ⇒ [<code>HTMLNode</code>](#module_parse.HTMLNode)
-    * [.HTMLNode](#module_parse.HTMLNode)
-    * [.TextNode](#module_parse.TextNode)
-    * [.CommentNode](#module_parse.CommentNode)
-
 <a name="module_parse.parse"></a>
 
-### parse.parse(htmlString) ⇒ [<code>HTMLNode</code>](#module_parse.HTMLNode)
+### parse.parse(htmlString) ⇒ [<code>InnerNode</code>](#module_model.InnerNode)
 Parses the given HTML-string to a tree representation.
 
 **Kind**: static method of [<code>parse</code>](#module_parse)  
-**Returns**: [<code>HTMLNode</code>](#module_parse.HTMLNode) - The (root node of the) HTML tree.  
+**Returns**: [<code>InnerNode</code>](#module_model.InnerNode) - The (root node of the) HTML tree.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -60,47 +189,6 @@ Results in:
   } ]
 }
 ```
-<a name="module_parse.HTMLNode"></a>
-
-### parse.HTMLNode
-A node in the HTML-tree.
-
-**Kind**: static typedef of [<code>parse</code>](#module_parse)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| type | <code>&quot;node&quot;</code> | The type of node. Always `node`. |
-| tag | <code>string</code> | The tag of the node, e.g. `p` for paragraphs or `h2` for level 2 headings. |
-| attributes | <code>Object</code> | The attributes of the node as a key-value map of strings. |
-| children | <code>Array.&lt;(module:parse.HTMLNode\|module:parse.TextNode\|module:parse.CommentNode)&gt;</code> | The children of the node. |
-
-<a name="module_parse.TextNode"></a>
-
-### parse.TextNode
-A text leaf node in the HTML-tree.
-
-**Kind**: static typedef of [<code>parse</code>](#module_parse)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| type | <code>&quot;text&quot;</code> | The type of node. Always "text". |
-| contents | <code>string</code> | The contents of the text node. |
-
-<a name="module_parse.CommentNode"></a>
-
-### parse.CommentNode
-A comment leaf node in the HTML-tree.
-
-**Kind**: static typedef of [<code>parse</code>](#module_parse)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| type | <code>&quot;comment&quot;</code> | The type of node. Always "comment". |
-| contents | <code>string</code> | The contents of the text node. |
-
 <a name="module_traverse"></a>
 
 ## traverse
@@ -109,27 +197,27 @@ an HTML-tree.
 
 
 * [traverse](#module_traverse)
-    * [.findAll(tree, condition)](#module_traverse.findAll) ⇒ [<code>Array.&lt;HTMLNode&gt;</code>](#module_parse.HTMLNode)
-    * [.findOne(tree, condition)](#module_traverse.findOne) ⇒ [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) \| <code>null</code>
+    * [.findAll(tree, condition)](#module_traverse.findAll) ⇒ <code>Array.&lt;(module:model.InnerNode\|module:model.LeafNode)&gt;</code>
+    * [.findOne(tree, condition)](#module_traverse.findOne) ⇒ <code>module:parse.HTMLNode</code> \| <code>module:parse.TextNode</code> \| <code>module:parse.CommentNode</code> \| <code>null</code>
     * [.innerText(node)](#module_traverse.innerText) ⇒ <code>string</code>
 
 <a name="module_traverse.findAll"></a>
 
-### traverse.findAll(tree, condition) ⇒ [<code>Array.&lt;HTMLNode&gt;</code>](#module_parse.HTMLNode)
+### traverse.findAll(tree, condition) ⇒ <code>Array.&lt;(module:model.InnerNode\|module:model.LeafNode)&gt;</code>
 Finds all nodes in the tree that satisfy the given condition
 and returns those nodes in an array.
 
 **Kind**: static method of [<code>traverse</code>](#module_traverse)  
-**Returns**: [<code>Array.&lt;HTMLNode&gt;</code>](#module_parse.HTMLNode) - The array of nodes in the tree that satisfy the condition.  
+**Returns**: <code>Array.&lt;(module:model.InnerNode\|module:model.LeafNode)&gt;</code> - The array of nodes in the tree that satisfy the condition.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| tree | [<code>HTMLNode</code>](#module_parse.HTMLNode) | The tree. |
+| tree | [<code>InnerNode</code>](#module_model.InnerNode) \| [<code>LeafNode</code>](#module_model.LeafNode) | The tree. |
 | condition | [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) | The condition, should map an `HTMLNode` to either `true` or `false`. |
 
 <a name="module_traverse.findOne"></a>
 
-### traverse.findOne(tree, condition) ⇒ [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) \| <code>null</code>
+### traverse.findOne(tree, condition) ⇒ <code>module:parse.HTMLNode</code> \| <code>module:parse.TextNode</code> \| <code>module:parse.CommentNode</code> \| <code>null</code>
 Finds and returns the first node in the tree that satisfies the given
 condition.
 
@@ -137,7 +225,7 @@ condition.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| tree | [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) | The tree. |
+| tree | <code>module:parse.HTMLNode</code> \| <code>module:parse.TextNode</code> \| <code>module:parse.CommentNode</code> | The tree. |
 | condition | [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) | The condition. |
 
 <a name="module_traverse.innerText"></a>
@@ -151,7 +239,7 @@ from the given node.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| node | [<code>HTMLNode</code>](#module_parse.HTMLNode) | The node. |
+| node | <code>module:parse.HTMLNode</code> | The node. |
 
 <a name="module_traverse/matchers"></a>
 
@@ -215,5 +303,5 @@ A match function that maps a node in the tree to either `true` or `false`.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| node | [<code>HTMLNode</code>](#module_parse.HTMLNode) \| [<code>TextNode</code>](#module_parse.TextNode) \| [<code>CommentNode</code>](#module_parse.CommentNode) \| <code>null</code> | The node to check. |
+| node | [<code>Node</code>](#module_model.Node) | The node to check. |
 

@@ -4,7 +4,7 @@ const fs = require( "fs/promises" );
 describe( "The buildTree function", () => {
 	it( "creates a tree stub, with only a root node, from an empty array of tokens", () => {
 		expect( buildTree( [] ) ).toEqual( {
-			type: "node", tag: "root", attributes: {}, children: [],
+			type: "InnerNode", tag: "root", attributes: {}, children: [],
 		} );
 	} );
 	it( "creates a tree from tokens", () => {
@@ -15,19 +15,19 @@ describe( "The buildTree function", () => {
 		];
 
 		const tree = {
-			type: "node",
+			type: "InnerNode",
 			tag: "root",
 			attributes: {},
 			children: [
 				{
-					type: "node",
+					type: "InnerNode",
 					tag: "p",
 					attributes: {
 						class: "hello"
 					},
 					children: [
 						{
-							type: "text",
+							type: "TextNode",
 							contents: "A simple paragraph.",
 						}
 					]
@@ -49,34 +49,34 @@ describe( "The buildTree function", () => {
 		];
 
 		const tree = {
-			type: "node",
+			type: "InnerNode",
 			tag: "root",
 			attributes: {},
 			children: [
 				{
-					type: "node",
+					type: "InnerNode",
 					tag: "p",
 					attributes: {
 						class: "hello"
 					},
 					children: [
 						{
-							type: "text",
+							type: "TextNode",
 							contents: "A simple "
 						},
 						{
-							type: "node",
+							type: "InnerNode",
 							tag: "strong",
 							attributes: {},
 							children: [
 								{
-									type: "text",
+									type: "TextNode",
 									contents: "paragraph."
 								}
 							]
 						},
 						{
-							type: "comment",
+							type: "CommentNode",
 							contents: "A comment."
 						}
 					]

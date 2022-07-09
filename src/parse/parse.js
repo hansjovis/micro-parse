@@ -32,7 +32,7 @@ const buildTree = require( "./buildTree" );
  *
  * @param {string} htmlString The HTML-string
  *
- * @return {module:parse.HTMLNode} The (root node of the) HTML tree.
+ * @return {module:model.InnerNode} The (root node of the) HTML tree.
  */
 function parse( htmlString ) {
 	const tokens = tokenize( htmlString );

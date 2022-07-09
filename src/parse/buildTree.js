@@ -1,25 +1,4 @@
-function createNode( tag, attributes = {}, children = [] ) {
-	return {
-		type: "node",
-		tag,
-		attributes,
-		children
-	};
-}
-
-function createTextNode( contents ) {
-	return {
-		type: "text",
-		contents,
-	};
-}
-
-function createCommentNode( contents ) {
-	return {
-		type: "comment",
-		contents,
-	};
-}
+const { InnerNode, TextNode, CommentNode } = require( "../model" );
 
 const selfClosingElements = [ "img", "br" ];
 
@@ -36,10 +15,10 @@ function isSelfClosingElement( token ) {
  *
  * @param {Array} tokens The list of tokens.
  *
- * @return {module:parse.HTMLNode} The (root node of the) HTML tree.
+ * @return {module:model.InnerNode} The (root node of the) HTML tree.
  */
 function buildTree( tokens ) {
-	let tree = createNode( "root" );
+	let tree = new InnerNode( "root" );
 	if ( tokens.length === 0 ) {
 		return tree;
 	}
@@ -51,7 +30,7 @@ function buildTree( tokens ) {
 		let token = tokens.shift();
 		switch ( token.type ) {
 			case "start-tag": {
-				const newNode = createNode( token.tag, token.attributes );
+				const newNode = new InnerNode( token.tag, token.attributes );
 				currentNode.children.push( newNode );
 				if ( ! isSelfClosingElement( token ) ) {
 					currentNode = newNode;
@@ -67,11 +46,11 @@ function buildTree( tokens ) {
 				break;
 			}
 			case "comment": {
-				currentNode.children.push( createCommentNode( token.contents ) );
+				currentNode.children.push( new CommentNode( token.contents ) );
 				break;
 			}
 			default: {
-				currentNode.children.push( createTextNode( token.contents ) );
+				currentNode.children.push( new TextNode( token.contents ) );
 			}
 		}
 	}

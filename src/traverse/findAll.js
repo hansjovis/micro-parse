@@ -4,10 +4,10 @@
  *
  * @memberOf module:traverse
  *
- * @param {module:parse.HTMLNode} tree The tree.
+ * @param {module:model.InnerNode|module:model.LeafNode} tree The tree.
  * @param {module:traverse/matchers.MatchFunction} condition The condition, should map an `HTMLNode` to either `true` or `false`.
  *
- * @return {module:parse.HTMLNode[]} The array of nodes in the tree that satisfy the condition.
+ * @return {Array<module:model.InnerNode|module:model.LeafNode>} The array of nodes in the tree that satisfy the condition.
  */
 function findAll( tree, condition ) {
 	const nodes = [];

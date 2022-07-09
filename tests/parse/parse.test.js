@@ -4,17 +4,17 @@ describe( "The parse function", () => {
 	it( "should parse a tree", () => {
 		const text = "<p>Hello world!</p>";
 		const tree = {
-			type: "node",
+			type: "InnerNode",
 			tag: "root",
 			attributes: {},
 			children: [
 				{
-					type: "node",
+					type: "InnerNode",
 					tag: "p",
 					attributes: {},
 					children: [
 						{
-							type: "text",
+							type: "TextNode",
 							contents: "Hello world!"
 						}
 					]
