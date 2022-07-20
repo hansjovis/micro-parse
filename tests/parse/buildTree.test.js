@@ -2,9 +2,9 @@ const buildTree = require( "../../src/parse/buildTree" );
 const fs = require( "fs/promises" );
 
 describe( "The buildTree function", () => {
-	it( "creates a tree stub, with only a root node, from an empty array of tokens", () => {
+	it( "creates a tree stub, with only a root fragment node, from an empty array of tokens", () => {
 		expect( buildTree( [] ) ).toEqual( {
-			type: "InnerNode", tag: "root", attributes: {}, children: [],
+			type: "InnerNode", tag: "#document-fragment", attributes: {}, children: [],
 		} );
 	} );
 	it( "creates a tree from tokens", () => {
@@ -16,21 +16,14 @@ describe( "The buildTree function", () => {
 
 		const tree = {
 			type: "InnerNode",
-			tag: "root",
-			attributes: {},
+			tag: "p",
+			attributes: {
+				class: "hello"
+			},
 			children: [
 				{
-					type: "InnerNode",
-					tag: "p",
-					attributes: {
-						class: "hello"
-					},
-					children: [
-						{
-							type: "TextNode",
-							contents: "A simple paragraph.",
-						}
-					]
+					type: "TextNode",
+					contents: "A simple paragraph.",
 				}
 			]
 		};
@@ -50,41 +43,34 @@ describe( "The buildTree function", () => {
 
 		const tree = {
 			type: "InnerNode",
-			tag: "root",
-			attributes: {},
+			tag: "p",
+			attributes: {
+				class: "hello"
+			},
 			children: [
 				{
+					type: "TextNode",
+					contents: "A simple "
+				},
+				{
 					type: "InnerNode",
-					tag: "p",
-					attributes: {
-						class: "hello"
-					},
+					tag: "strong",
+					attributes: {},
 					children: [
 						{
 							type: "TextNode",
-							contents: "A simple "
-						},
-						{
-							type: "InnerNode",
-							tag: "strong",
-							attributes: {},
-							children: [
-								{
-									type: "TextNode",
-									contents: "paragraph."
-								}
-							]
-						},
-						{
-							type: "CommentNode",
-							contents: "A comment."
+							contents: "paragraph."
 						}
 					]
+				},
+				{
+					type: "CommentNode",
+					contents: "A comment."
 				}
 			]
 		};
 
-		expect( buildTree( tokens) ).toEqual( tree );
+		expect( buildTree( tokens ) ).toEqual( tree );
 	} );
 	it( "can create a tree from a list of tokens from an article", async () => {
 		const tokenString = await fs.readFile( "./texts/bbc-article.tokens.json", "utf-8" );

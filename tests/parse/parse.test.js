@@ -5,19 +5,12 @@ describe( "The parse function", () => {
 		const text = "<p>Hello world!</p>";
 		const tree = {
 			type: "InnerNode",
-			tag: "root",
+			tag: "p",
 			attributes: {},
 			children: [
 				{
-					type: "InnerNode",
-					tag: "p",
-					attributes: {},
-					children: [
-						{
-							type: "TextNode",
-							contents: "Hello world!"
-						}
-					]
+					type: "TextNode",
+					contents: "Hello world!"
 				}
 			]
 		};

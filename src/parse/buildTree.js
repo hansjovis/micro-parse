@@ -15,10 +15,10 @@ function isSelfClosingElement( token ) {
  *
  * @param {Array} tokens The list of tokens.
  *
- * @return {module:model.InnerNode} The (root node of the) HTML tree.
+ * @return {module:model.Node} The (root node of the) HTML tree.
  */
 function buildTree( tokens ) {
-	let tree = new InnerNode( "root" );
+	let tree = new InnerNode( "#document-fragment" );
 	if ( tokens.length === 0 ) {
 		return tree;
 	}
@@ -53,6 +53,11 @@ function buildTree( tokens ) {
 				currentNode.children.push( new TextNode( token.contents ) );
 			}
 		}
+	}
+
+	// If the root node has only one child, return that node as the root instead.
+	if ( tree.children && tree.children.length === 1 ) {
+		return tree.children[ 0 ];
 	}
 
 	return tree;

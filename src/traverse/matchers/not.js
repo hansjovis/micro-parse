@@ -1,5 +1,7 @@
 /**
- * Inverts the given match function,
+ * Inverts the given match function.
+ *
+ * @memberOf module:traverse/matchers
  *
  * @param {module:traverse/matchers.MatchFunction} matcher
  *

@@ -4,7 +4,7 @@
  *
  * @memberOf module:traverse
  *
- * @param {module:parse.HTMLNode} node The node.
+ * @param {module:parse.Node} node The node.
  *
  * @return {string} The text content of the node.
  */
