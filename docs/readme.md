@@ -16,6 +16,14 @@ an HTML-tree.</p>
 </dd>
 </dl>
 
+## Functions
+
+<dl>
+<dt><a href="#not">not(matcher)</a> ⇒ <code><a href="#module_traverse/matchers.MatchFunction">MatchFunction</a></code></dt>
+<dd><p>Inverts the given match function,</p>
+</dd>
+</dl>
+
 <a name="module_model"></a>
 
 ## model
@@ -304,4 +312,15 @@ A match function that maps a node in the tree to either `true` or `false`.
 | Param | Type | Description |
 | --- | --- | --- |
 | node | [<code>Node</code>](#module_model.Node) | The node to check. |
+
+<a name="not"></a>
+
+## not(matcher) ⇒ [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction)
+Inverts the given match function,
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| matcher | [<code>MatchFunction</code>](#module_traverse/matchers.MatchFunction) | 
 
