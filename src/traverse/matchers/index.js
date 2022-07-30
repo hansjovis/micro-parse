@@ -1,6 +1,7 @@
 const withTag = require( "./withTag" );
 const withAttribute = require( "./withAttribute" );
 const hasAttribute = require( "./hasAttribute" );
+const hasChild = require( "./hasChild" );
 const not = require( "./not" );
 
 /**
@@ -23,5 +24,6 @@ module.exports = {
 	withTag,
 	withAttribute,
 	hasAttribute,
+	hasChild,
 	not,
 };

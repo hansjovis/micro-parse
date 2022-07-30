@@ -1,4 +1,5 @@
 const { findAll } = require( "../../src/traverse" );
+const { withTag, withAttribute } = require( "../../src/traverse/matchers" );
 
 describe( "The findAll function", () => {
 	it( "finds all nodes of a given type in a tree.", () => {
@@ -21,7 +22,9 @@ describe( "The findAll function", () => {
 						{
 							type: "node",
 							tag: "strong",
-							attributes: {},
+							attributes: {
+								class: "large"
+							},
 							children: [
 								{
 									type: "text",
@@ -47,7 +50,9 @@ describe( "The findAll function", () => {
 						{
 							type: "node",
 							tag: "strong",
-							attributes: {},
+							attributes: {
+								class: "large"
+							},
 							children: [
 								{
 									type: "text",
@@ -60,6 +65,8 @@ describe( "The findAll function", () => {
 			]
 		};
 
-		expect( findAll( tree, node => node.tag === "strong" ) ).toHaveLength( 2 );
+		expect(
+			findAll( tree, withTag( "strong" ).and( withAttribute( "class", "large" ) ) )
+		).toHaveLength( 2 );
 	} );
 } );

@@ -1,3 +1,5 @@
+const enrichMatcher = require( "./helpers/enrichMatcher" );
+
 /**
  * Returns a matcher function that checks whether a node
  * has a given tag.
@@ -9,7 +11,8 @@
  * @return {module:traverse/matchers.MatchFunction} The matcher function.
  */
 function withTag( tag ) {
-	return node => node.tag === tag;
+	const matcher = node => node.tag === tag;
+	return enrichMatcher( matcher );
 }
 
 module.exports = withTag;

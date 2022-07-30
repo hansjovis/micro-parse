@@ -1,3 +1,5 @@
+const enrichMatcher = require( "./helpers/enrichMatcher" );
+
 /**
  * Returns a matcher function that checks whether a node has an attribute with
  * the given value.
@@ -10,7 +12,8 @@
  * @return {module:traverse/matchers.MatchFunction} A function that returns `true` if the attribute has the given value.
  */
 function withAttribute( attribute, value ) {
-	return node => node.attributes[ attribute ] === value;
+	const matcher = node => node.attributes[ attribute ] === value;
+	return enrichMatcher( matcher );
 }
 
 module.exports = withAttribute;
