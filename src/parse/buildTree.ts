@@ -1,3 +1,5 @@
+import { Node } from "../model";
+
 const { InnerNode, TextNode, CommentNode } = require( "../model" );
 
 const selfClosingElements = [ "img", "br" ];
@@ -13,11 +15,11 @@ function isSelfClosingElement( token ) {
  *
  * @memberOf module:parse
  *
- * @param {Array} tokens The list of tokens.
+ * @param tokens The list of tokens.
  *
- * @return {module:model.Node} The (root node of the) HTML tree.
+ * @return The (root node of the) HTML tree.
  */
-function buildTree( tokens ) {
+function buildTree( tokens: any[] ): Node {
 	let tree = new InnerNode( "#document-fragment" );
 	if ( tokens.length === 0 ) {
 		return tree;

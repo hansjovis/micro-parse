@@ -2,3 +2,5 @@
 node_modules
 # test coverage reports
 coverage
+# built code
+build

@@ -2,7 +2,7 @@
 
 _Micro-parse_ is a tiny HTML parser, written in JavaScript. 
 
-It is hobby project, made in a few days to hone my own JavaScript skills, so use it at your own risk.
+It is hobby project to hone my own JavaScript skills, so use it at your own risk.
 
 ## Examples
 
@@ -20,13 +20,12 @@ const htmlString = `<div>
 </div>`;
 
 const tree = parse( htmlString );
+// Find all paragraphs within the HTML.
 const paragraphs = findAll( tree, withTag( "p" ) );
+// Grab the inner text of the found paragraphs.
 const texts = paragraphs.map( innerText );
 
-/*
- * Prints: [ "Introduction.", "Text." ]
- */
-console.log( texts );
+console.log( texts ); // [ "Introduction.", "Text." ]
 ```
 
 ## Documentation
@@ -40,6 +39,11 @@ The API documentation can be found within [the docs folder in this repository](.
 #### Installing dependencies
 ``` 
 yarn install
+```
+
+#### Building source code
+```
+yarn build
 ```
 
 #### Running tests
