@@ -10,7 +10,7 @@ import Matcher from "./model/Matcher";
  */
 function withTag( tag: string ): Matcher {
 	const matcher = node => node.tag === tag;
-	return enrichMatcher( matcher as Matcher );
+	return enrichMatcher( matcher );
 }
 
 export default withTag;

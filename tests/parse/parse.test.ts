@@ -1,4 +1,4 @@
-const { parse } = require( "../../src/parse" );
+import { parse } from "../../src/parse";
 
 describe( "The parse function", () => {
 	it( "should parse a tree", () => {

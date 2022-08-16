@@ -1,7 +1,6 @@
-const isEmptyString = require( "../helpers/isEmptyString" );
-const normalizeWhiteSpace = require( "../helpers/normalizeWhiteSpace" );
-const removeEmptyTokens = require( "../helpers/removeEmptyTokens" );
-const parseAttributes = require( "./parseAttributes" );
+import { isEmptyString, normalizeWhiteSpace, removeEmptyTokens } from "../helpers";
+import { Token, StartTagToken, EndTagToken, CommentToken, TextToken } from "./model";
+import parseAttributes from "./parseAttributes";
 
 const startTagRegexString = "<[a-zA-Z0-9]+(?:>|.*?[^?]>)";
 const endTagRegexString = "</[a-zA-Z0-9]+(?:>|.*?[^?]>)";
@@ -17,7 +16,7 @@ const startTagParseRegex = new RegExp( "<([a-zA-Z0-9]+)(?:>|(.*?[^?])>)", "i" );
 const endTagParseRegex = new RegExp( "</([a-zA-Z0-9]+)(?:>|.*?[^?]>)", "i" );
 const commentParseRegex = new RegExp( "<!--(.*)-->", "i" );
 
-function parseStartTag( token ) {
+function parseStartTag( token: string ): StartTagToken {
 	const match = token.match( startTagParseRegex );
 	const tag = match[ 1 ];
 	let attributes = {};
@@ -34,7 +33,7 @@ function parseStartTag( token ) {
 	};
 }
 
-function parseEndTag( token ) {
+function parseEndTag( token: string ): EndTagToken {
 	const match = token.match( endTagParseRegex );
 	const tag = match[ 1 ];
 	return {
@@ -44,7 +43,7 @@ function parseEndTag( token ) {
 	}
 }
 
-function parseComment( token ) {
+function parseComment( token: string ): CommentToken {
 	const match = token.match( commentParseRegex );
 	const contents = match[ 1 ];
 	return {
@@ -53,7 +52,7 @@ function parseComment( token ) {
 	};
 }
 
-function parseToken( token ) {
+function parseToken( token: string ): Token {
 	if ( startTagRegex.test( token ) ) {
 		return parseStartTag( token );
 	} else if ( endTagRegex.test( token ) ) {
@@ -64,10 +63,10 @@ function parseToken( token ) {
 	return {
 		type: "text",
 		contents: token,
-	};
+	} as TextToken;
 }
 
-function tokenize( text ) {
+function tokenize( text ): Token[] {
 	if ( isEmptyString( text ) ) {
 		return [];
 	}
@@ -80,4 +79,4 @@ function tokenize( text ) {
 	return textTokens.map( parseToken );
 }
 
-module.exports = tokenize;
+export default tokenize;

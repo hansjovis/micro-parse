@@ -1,5 +1,6 @@
-const findAll = require( "./findAll" );
-const innerText = require( "./innerText" );
+import findAll from "./findAll";
+import findOne from "./findOne";
+import innerText from "./innerText";
 
 /**
  * A module for traversing and retrieving information from
@@ -8,7 +9,8 @@ const innerText = require( "./innerText" );
  * @module traverse
  */
 
-module.exports = {
+export {
 	findAll,
+	findOne,
 	innerText,
 }

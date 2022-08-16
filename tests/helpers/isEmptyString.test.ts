@@ -1,4 +1,4 @@
-const isEmptyString = require( "../../src/helpers/isEmptyString" );
+import isEmptyString from "../../src/helpers/isEmptyString";
 
 describe( "The isEmptyString function", () => {
 	it( "returns true when given an empty string", () => {

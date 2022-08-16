@@ -1,10 +1,11 @@
 import { Node } from "../model";
 
-const { InnerNode, TextNode, CommentNode } = require( "../model" );
+import { InnerNode, TextNode, CommentNode } from "../model";
+import Token from "./model/Token";
 
 const selfClosingElements = [ "img", "br" ];
 
-function isSelfClosingElement( token ) {
+function isSelfClosingElement( token: any ): boolean {
 	return selfClosingElements.includes( token.tag );
 }
 
@@ -19,7 +20,7 @@ function isSelfClosingElement( token ) {
  *
  * @return The (root node of the) HTML tree.
  */
-function buildTree( tokens: any[] ): Node {
+function buildTree( tokens: Token[] ): Node {
 	let tree = new InnerNode( "#document-fragment" );
 	if ( tokens.length === 0 ) {
 		return tree;
@@ -65,4 +66,4 @@ function buildTree( tokens: any[] ): Node {
 	return tree;
 }
 
-module.exports = buildTree;
+export default buildTree;

@@ -1,4 +1,4 @@
-const parseAttributes = require( "../../src/parse/parseAttributes" );
+import parseAttributes from "../../src/parse/parseAttributes";
 
 describe( "The parseAttributes function", () => {
 	it( "returns an empty object when parsing a string with no attributes.", () => {

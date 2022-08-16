@@ -1,5 +1,6 @@
-const buildTree = require( "../../src/parse/buildTree" );
-const fs = require( "fs/promises" );
+import buildTree from "../../src/parse/buildTree";
+import { Token } from "../../src/parse/model";
+import { readFile } from "fs/promises";
 
 describe( "The buildTree function", () => {
 	it( "creates a tree stub, with only a root fragment node, from an empty array of tokens", () => {
@@ -8,7 +9,7 @@ describe( "The buildTree function", () => {
 		} );
 	} );
 	it( "creates a tree from tokens", () => {
-		const tokens = [
+		const tokens: Token[] = [
 			{ type: "start-tag", contents: "<p class='hello'>", tag: "p", attributes: { "class": "hello" } },
 			{ type: "text", contents: "A simple paragraph." },
 			{ type: "end-tag", contents: "</p>", tag: "p" },
@@ -31,7 +32,7 @@ describe( "The buildTree function", () => {
 		expect( buildTree( tokens ) ).toEqual( tree );
 	} );
 	it( "creates a nested tree from tokens", () => {
-		const tokens = [
+		const tokens: Token[] = [
 			{ type: "start-tag", contents: "<p class='hello'>", tag: "p", attributes: { "class": "hello" } },
 			{ type: "text", contents: "A simple " },
 			{ type: "start-tag", contents: "<strong>", tag: "strong", attributes: {} },
@@ -73,8 +74,8 @@ describe( "The buildTree function", () => {
 		expect( buildTree( tokens ) ).toEqual( tree );
 	} );
 	it( "can create a tree from a list of tokens from an article", async () => {
-		const tokenString = await fs.readFile( "./texts/bbc-article.tokens.json", "utf-8" );
-		const treeString = await fs.readFile( "./texts/bbc-article.tree.json", "utf-8" );
+		const tokenString = await readFile( "./texts/bbc-article.tokens.json", "utf-8" );
+		const treeString = await readFile( "./texts/bbc-article.tree.json", "utf-8" );
 
 		const tokens = JSON.parse( tokenString );
 		const tree = JSON.parse( treeString );

@@ -1,6 +1,5 @@
-const isEmptyString = require( "../helpers/isEmptyString" );
-const normalizeWhiteSpace = require( "../helpers/normalizeWhiteSpace" );
-const removeEmptyTokens = require( "../helpers/removeEmptyTokens" );
+import { isEmptyString, removeEmptyTokens, normalizeWhiteSpace } from "../helpers";
+import Attributes from "./model/Attributes";
 
 const keyValueRegexString = "[\\w-]+=(?<quote>[\"']).*?\\k<quote>";
 const keyRegexString = "[\\w-]+";
@@ -12,7 +11,7 @@ const splitRegex = new RegExp( `(${ keyValueRegexString })|(${ keyRegexString })
 
 const keyValueParseRegex = /([\w-]+)=(["'])(.*?)\2/i;
 
-function parseKeyValueAttribute( token ) {
+function parseKeyValueAttribute( token: string ): Attributes {
 	const match = token.match( keyValueParseRegex );
 
 	const key = match[ 1 ];
@@ -23,13 +22,13 @@ function parseKeyValueAttribute( token ) {
 	};
 }
 
-function parseKeyAttribute( token ) {
+function parseKeyAttribute( token: string ): Attributes {
 	return {
 		[token]: true,
 	};
 }
 
-function parseAttribute( token ) {
+function parseAttribute( token: string ): Attributes {
 	if ( keyValueRegex.test( token ) ) {
 		return parseKeyValueAttribute( token );
 	} else if ( keyRegex.test( token ) ) {
@@ -38,7 +37,7 @@ function parseAttribute( token ) {
 	return {};
 }
 
-function parseAttributes( string ) {
+function parseAttributes( string: string ): Attributes {
 	if ( isEmptyString( string ) ) {
 		return {};
 	}
@@ -56,4 +55,4 @@ function parseAttributes( string ) {
 	return attributes;
 }
 
-module.exports = parseAttributes;
+export default parseAttributes;

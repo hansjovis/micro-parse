@@ -1,9 +1,15 @@
-const enrichMatcher = require( "../../../src/traverse/matchers/helpers/enrichMatcher" );
-const { InnerNode } = require( "../../../src/model" );
+import enrichMatcher from "../../../src/traverse/matchers/helpers/enrichMatcher";
+import { InnerNode } from "../../../src/model";
+import Matcher from "../../../src/traverse/matchers/model/Matcher";
 
 describe( "The enrichMatcher function", () => {
 	it( "Enriches a matcher function", () => {
-		let hasChildren = node => node.children && node.children.length > 0;
+		let hasChildren: Matcher = node => {
+			if ( node instanceof InnerNode ) {
+				return node.children && node.children.length > 0;
+			}
+			return false;
+		}
 		const isParagraph = node => node.tag === "p";
 
 		const node = new InnerNode( "p" );

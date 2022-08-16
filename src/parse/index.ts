@@ -1,11 +1,10 @@
-const parse = require( "./parse" );
+import parse from "./parse";
 
 /**
  * The parse module.
  *
  * @module parse
  */
-
-module.exports = {
+export {
 	parse
 }

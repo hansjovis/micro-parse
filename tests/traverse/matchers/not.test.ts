@@ -1,6 +1,6 @@
-const { InnerNode } = require( "../../../src/model" );
-const { withTag } = require( "../../../src/traverse/matchers" );
-const not = require( "../../../src/traverse/matchers/not" );
+import { InnerNode } from "../../../src/model";
+import { withTag } from "../../../src/traverse/matchers";
+import not from "../../../src/traverse/matchers/not";
 
 
 describe( "The not function", () => {

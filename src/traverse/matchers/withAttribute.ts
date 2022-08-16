@@ -10,9 +10,9 @@ import Matcher from "./model/Matcher";
  *
  * @return A function that returns `true` if a node has an attribute with the given value.
  */
-function withAttribute( attribute: string, value: any ) {
+function withAttribute( attribute: string, value: any ): Matcher {
 	const matcher = node => node.attributes[ attribute ] === value;
-	return enrichMatcher( matcher as Matcher );
+	return enrichMatcher( matcher );
 }
 
 export default withAttribute;

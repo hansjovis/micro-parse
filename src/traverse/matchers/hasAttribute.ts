@@ -11,7 +11,7 @@ import Matcher from "./model/Matcher";
  */
 function hasAttribute( attribute: string ): Matcher {
 	const matcher = node => node.attributes.hasOwnProperty( attribute );
-	return enrichMatcher( matcher as Matcher );
+	return enrichMatcher( matcher );
 }
 
 export default hasAttribute;

@@ -12,7 +12,7 @@ import enrichMatcher from "./helpers/enrichMatcher";
  * @returns The inverted matcher function.
  */
 function not( matcher: Matcher ): Matcher {
-	return enrichMatcher( ( node => ! matcher( node ) ) as Matcher );
+	return enrichMatcher( node => ! matcher( node ) );
 }
 
 export default not;

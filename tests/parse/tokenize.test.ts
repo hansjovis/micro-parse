@@ -1,5 +1,6 @@
-const fs = require( "fs/promises" );
-const tokenize = require( "../../src/parse/tokenize" );
+import { readFile } from "fs/promises";
+
+import tokenize from "../../src/parse/tokenize";
 
 describe( "The tokenizer function", () => {
 	it( "tokenizes an empty string into an empty list of tokens.", () => {
@@ -38,8 +39,8 @@ describe( "The tokenizer function", () => {
 		] );
 	} );
 	it( "tokenizes a full article", async () => {
-		const article = await fs.readFile( "./texts/bbc-article.html", "utf-8" );
-		const tokenString = await fs.readFile( "./texts/bbc-article.tokens.json", "utf-8" );
+		const article = await readFile( "./texts/bbc-article.html", "utf-8" );
+		const tokenString = await readFile( "./texts/bbc-article.tokens.json", "utf-8" );
 
 		const tokens = JSON.parse( tokenString );
 

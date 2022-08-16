@@ -11,7 +11,7 @@ import Matcher from "./model/Matcher";
  */
 function hasChild( matcher: Matcher ): Matcher {
 	const hasChildMatcher = node => node.children.some( child => matcher( child ) );
-	return enrichMatcher( hasChildMatcher as Matcher );
+	return enrichMatcher( hasChildMatcher );
 }
 
 export default hasChild;

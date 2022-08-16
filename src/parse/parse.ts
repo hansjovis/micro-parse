@@ -1,5 +1,6 @@
-const tokenize = require( "./tokenize" );
-const buildTree = require( "./buildTree" );
+import { Node } from "../model";
+import tokenize from "./tokenize";
+import buildTree from "./buildTree";
 
 /**
  * Parses the given HTML-string to a tree representation.
@@ -30,13 +31,13 @@ const buildTree = require( "./buildTree" );
  * }
  * ```
  *
- * @param {string} htmlString The HTML-string
+ * @param htmlString The HTML-string
  *
- * @return {module:model.InnerNode} The (root node of the) HTML tree.
+ * @return The (root node of the) HTML tree.
  */
-function parse( htmlString ) {
+function parse( htmlString: string ): Node {
 	const tokens = tokenize( htmlString );
 	return buildTree( tokens );
 }
 
-module.exports = parse;
+export default parse;

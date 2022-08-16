@@ -1,4 +1,4 @@
-const hasAttribute = require( "../../../src/traverse/matchers/hasAttribute" );
+import hasAttribute from "../../../src/traverse/matchers/hasAttribute";
 
 describe( "The hasAttribute function", () => {
 	it( "returns a function that checks whether a node has an attribute", () => {

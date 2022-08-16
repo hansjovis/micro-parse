@@ -1,6 +1,6 @@
-const { withTag } = require( "../../../src/traverse/matchers" );
-const { parse } = require( "../../../src/parse" );
-const hasChild = require( "../../../src/traverse/matchers/hasChild" );
+import { parse } from "../../../src/parse";
+import hasChild from "../../../src/traverse/matchers/hasChild";
+import withTag from "../../../src/traverse/matchers/withTag";
 
 
 describe( "The hasChild function", () => {
