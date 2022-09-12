@@ -1,16 +1,17 @@
 import { isEmptyString, normalizeWhiteSpace, removeEmptyTokens } from "../helpers";
-import { Token, StartTagToken, EndTagToken, CommentToken, TextToken } from "./model";
+import { CommentToken, EndTagToken, StartTagToken, TextToken, Token } from "./model";
 import parseAttributes from "./parseAttributes";
 
-const startTagRegexString = "<[a-zA-Z0-9]+(?:>|.*?[^?]>)";
-const endTagRegexString = "</[a-zA-Z0-9]+(?:>|.*?[^?]>)";
-const commentRegexString = "<!--.*-->";
+const startTagRegex = new RegExp( "<[a-zA-Z0-9]+(?:>|.*?[^?]>)", "i" );
+const endTagRegex = new RegExp( "</[a-zA-Z0-9]+(?:>|.*?[^?]>)", "i" );
+const commentRegex = new RegExp( "<!--.*-->", "i" );
 
-const splitRegex = new RegExp( `(${ startTagRegexString })|(${ endTagRegexString })|(${ commentRegexString })`, "gi" );
+function getSplitRegex( regexes ) {
+	const string = regexes.map( regex => `(${ regex.source })` ).join( "|" );
+	return new RegExp( string, "gi" );
+}
 
-const startTagRegex = new RegExp( startTagRegexString, "i" );
-const endTagRegex = new RegExp( endTagRegexString, "i" );
-const commentRegex = new RegExp( commentRegexString, "i" );
+const splitRegex = getSplitRegex( [ startTagRegex, endTagRegex, commentRegex ] );
 
 const startTagParseRegex = new RegExp( "<([a-zA-Z0-9]+)(?:>|(.*?[^?])>)", "i" );
 const endTagParseRegex = new RegExp( "</([a-zA-Z0-9]+)(?:>|.*?[^?]>)", "i" );
