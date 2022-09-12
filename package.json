@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "docs": "typedoc --out docs-ts ./src/model/index.ts"
+    "docs": "typedoc --out docs --entryPointStrategy expand ./src"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
