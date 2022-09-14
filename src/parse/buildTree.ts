@@ -29,10 +29,17 @@ function buildTree( tokens: Token[] ): Node {
 	const stack = [ tree ];
 	let currentNode = tree;
 
-	while ( tokens.length > 1 ) {
+	let startPos = {
+		start: 0,
+		end: 0
+	};
+
+	while ( tokens.length >= 1 ) {
 		let token = tokens.shift();
 		switch ( token.type ) {
 			case "start-tag": {
+				startPos = token.position;
+
 				const newNode = new InnerNode( token.tag, token.attributes );
 				currentNode.children.push( newNode );
 				if ( ! isSelfClosingElement( token ) ) {
@@ -43,17 +50,22 @@ function buildTree( tokens: Token[] ): Node {
 			}
 			case "end-tag": {
 				if ( token.tag === currentNode.tag ) {
+					currentNode.position = {
+						startTag: startPos,
+						endTag: token.position
+					};
+
 					stack.pop();
 					currentNode = stack[ stack.length - 1 ];
 				}
 				break;
 			}
 			case "comment": {
-				currentNode.children.push( new CommentNode( token.contents ) );
+				currentNode.children.push( new CommentNode( token.contents, token.position ) );
 				break;
 			}
 			default: {
-				currentNode.children.push( new TextNode( token.contents ) );
+				currentNode.children.push( new TextNode( token.contents, token.position ) );
 			}
 		}
 	}

@@ -12,9 +12,21 @@ describe( "The buildTree function", () => {
 		const html = `<p class='hello'>A simple paragraph.</p>`;
 		const tokens = tokenize( html );
 
+		const position = {
+			startTag: {
+				start: 0,
+				end: 17,
+			},
+			endTag: {
+				start: 36,
+				end: 40,
+			},
+		};
+
 		const tree = {
 			type: "InnerNode",
 			tag: "p",
+			position,
 			attributes: {
 				class: "hello"
 			},
@@ -22,6 +34,10 @@ describe( "The buildTree function", () => {
 				{
 					type: "TextNode",
 					contents: "A simple paragraph.",
+					position: {
+						start: 17,
+						end: 36,
+					}
 				}
 			]
 		};
@@ -35,28 +51,60 @@ describe( "The buildTree function", () => {
 		const tree = {
 			type: "InnerNode",
 			tag: "p",
+			position: {
+				startTag: {
+					start: 26,
+					end: 34,
+				},
+				endTag: {
+					start: 72,
+					end: 76,
+				}
+			},
 			attributes: {
 				class: "hello"
 			},
 			children: [
 				{
 					type: "TextNode",
-					contents: "A simple "
+					contents: "A simple ",
+					position: {
+						start: 17,
+						end: 26
+					},
 				},
 				{
 					type: "InnerNode",
 					tag: "strong",
 					attributes: {},
+					position: {
+						startTag: {
+							start: 26,
+							end: 34
+						},
+						endTag: {
+							start: 44,
+							end: 53
+						}
+					},
 					children: [
 						{
 							type: "TextNode",
-							contents: "paragraph."
+							contents: "paragraph.",
+							position: {
+								start: 34,
+								end: 44
+							}
 						}
 					]
 				},
 				{
 					type: "CommentNode",
-					contents: "A comment."
+					contents: "A comment.",
+					position: {
+						start: 53,
+						end: 72,
+					}
 				}
 			]
 		};

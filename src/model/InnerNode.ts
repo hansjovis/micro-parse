@@ -1,4 +1,5 @@
 import Node from "./Node";
+import NodePosition from "../parse/model/NodePosition";
 
 /**
  * An internal node in the tree.
@@ -16,6 +17,11 @@ class InnerNode extends Node {
 	 * The children of the node.
 	 */
 	children: Node[] = [];
+
+	/**
+	 * The position of this node in the source code.
+	 */
+	position: NodePosition;
 
 	/**
 	 * Create a new inner node.
