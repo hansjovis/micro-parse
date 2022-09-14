@@ -1,4 +1,3 @@
-import isEmptyString from "./isEmptyString";
 
 /**
  * Removes empty tokens (tokens that are falsy, like `null`, an empty string or `undefined`).
@@ -8,7 +7,7 @@ import isEmptyString from "./isEmptyString";
  * @returns The tokens with empty tokens returned.
  */
 function removeEmptyTokens( tokens: string[] ): string[] {
-	return tokens.filter( Boolean ).filter( token => ! isEmptyString( token ) );
+	return tokens.filter( Boolean );
 }
 
 export default removeEmptyTokens;
