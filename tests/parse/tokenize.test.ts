@@ -71,11 +71,9 @@ describe( "The tokenizer function", () => {
 	} );
 	it( "tokenizes a full article", async () => {
 		const article = await readFile( "./texts/bbc-article.html", "utf-8" );
-		// const tokenString = await readFile( "./texts/bbc-article.tokens.json", "utf-8" );
+		const tokenString = await readFile( "./texts/bbc-article.tokens.json", "utf-8" );
 
-		const tokens = tokenize( article );
-
-		await writeFile( "./texts/bbc-article.tokens.json", JSON.stringify( tokens, null, 2 ) );
+		expect( tokenize( article ) ).toEqual( JSON.parse( tokenString ) );
 	} );
 } );
 

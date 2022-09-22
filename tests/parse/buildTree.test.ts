@@ -113,8 +113,8 @@ describe( "The buildTree function", () => {
 	} );
 	it( "can create a tree from a list of tokens from an article", async () => {
 		const tokenString = await readFile( "./texts/bbc-article.tokens.json", "utf-8" );
-		// const treeString = await readFile( "./texts/bbc-article.tree.json", "utf-8" );
+		const treeString = await readFile( "./texts/bbc-article.tree.json", "utf-8" );
 
-		await writeFile( "./texts/bbc-article.tree.json", JSON.stringify( buildTree( JSON.parse( tokenString ) ), null, 2 ) );
+		expect( buildTree( JSON.parse( tokenString ) ) ).toEqual( JSON.parse( treeString ) );
 	} );
 } );
