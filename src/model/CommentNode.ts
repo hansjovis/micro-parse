@@ -17,7 +17,7 @@ class CommentNode extends LeafNode {
 
 	/**
 	 * Creates a new comment node.
-	 * @param contents The comment node's contents.
+	 * @param [contents] The comment node's contents.
 	 * @param [position] The position of this comment in the source code.
 	 */
 	constructor( contents: string = "", position: Position = { start: 0, end: contents.length } ) {
