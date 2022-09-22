@@ -22,14 +22,30 @@ describe( "The findOne function", () => {
 		expect( findOne( tree, withTag( "div" ) ) ).toEqual( null );
 	} );
 	it( "returns the node if a node that adheres to the condition exists in the tree", () => {
+		const position = {
+			startTag: {
+				start: 33,
+				end: 41
+			},
+			endTag: {
+				start: 51,
+				end: 60
+			}
+		};
+
 		const node = {
 			tag: "strong",
 			type: "InnerNode",
 			attributes: {},
+			position,
 			children: [
 				{
 					contents: "paragraph.",
-					type: "TextNode"
+					type: "TextNode",
+					position: {
+						start: 41,
+						end: 51,
+					}
 				}
 			],
 		};
