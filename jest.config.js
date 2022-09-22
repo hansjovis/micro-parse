@@ -3,6 +3,8 @@ module.exports = {
 	preset: "ts-jest",
 	testEnvironment: "node",
 	collectCoverageFrom: [ "src/**" ],
+	// Index files do not contain any logic, so can be ignored for code coverage.
+	coveragePathIgnorePatterns: [ "index\.ts" ],
 	coverageThreshold: {
 		global: {
 			statements: 95,
