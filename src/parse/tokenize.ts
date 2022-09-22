@@ -17,7 +17,7 @@ const startTagParseRegex = new RegExp( "<([a-zA-Z0-9]+)(?:>|(.*?[^?])>)", "s" );
 const endTagParseRegex = new RegExp( "</([a-zA-Z0-9]+)(?:>|.*?[^?]>)", "s" );
 const commentParseRegex = new RegExp( "<!--(.*)-->", "s" );
 
-function parseStartTag( token: string, startPos: number = 0 ): StartTagToken {
+function parseStartTag( token: string, startPos: number ): StartTagToken {
 	const match = token.match( startTagParseRegex );
 	const tag = match[ 1 ];
 	let attributes = {};
@@ -38,7 +38,7 @@ function parseStartTag( token: string, startPos: number = 0 ): StartTagToken {
 	};
 }
 
-function parseEndTag( token: string, startPos: number = 0 ): EndTagToken {
+function parseEndTag( token: string, startPos: number ): EndTagToken {
 	const match = token.match( endTagParseRegex );
 	const tag = match[ 1 ];
 	return {
@@ -52,7 +52,7 @@ function parseEndTag( token: string, startPos: number = 0 ): EndTagToken {
 	}
 }
 
-function parseComment( token: string, startPos: number = 0 ): CommentToken {
+function parseComment( token: string, startPos: number ): CommentToken {
 	const match = token.match( commentParseRegex );
 	const contents = match[ 1 ];
 	return {
@@ -65,7 +65,7 @@ function parseComment( token: string, startPos: number = 0 ): CommentToken {
 	};
 }
 
-function parseToken( token: string, startPos: number = 0 ): Token {
+function parseToken( token: string, startPos: number ): Token {
 	if ( startTagRegex.test( token ) ) {
 		return parseStartTag( token, startPos );
 	} else if ( endTagRegex.test( token ) ) {
