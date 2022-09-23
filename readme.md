@@ -7,10 +7,10 @@ It is hobby project to hone my own JavaScript skills, so use it at your own risk
 ## Examples
 
 ### Getting the text of all paragraphs within a document
-```js
-const { parse } = require( "micro-parse/parse" );
-const { findAll, innerText } = require( "micro-parse/traverse" );
-const { withTag } = require( "micro-parse/traverse/matchers" );
+```ts
+import { parse } from "micro-parse/parse";
+import { findAll, innerText } from "micro-parse/traverse";
+import { withTag } from "micro-parse/traverse/matchers";
 
 const htmlString = `<div>
     <h1>Title</h1>
@@ -49,6 +49,11 @@ yarn build
 #### Running tests
 ``` 
 yarn test
+```
+
+##### Running tests with coverage
+```
+yarn test --coverage
 ```
 
 #### Generating docs
