@@ -1,10 +1,14 @@
 {
   "name": "micro-parse",
   "version": "1.0.0-alpha.1",
-  "main": "index.js",
+  "main": "./build/cjs/index.js",
   "license": "MIT",
+  "exports": {
+    "import": "./build/esm/index.js",
+    "require": "./build/cjs/index.js"
+  },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project ./cjs.tsconfig.json && tsc --project ./esm.tsconfig.json",
     "test": "jest",
     "docs": "typedoc --out docs --entryPointStrategy expand ./src"
   },

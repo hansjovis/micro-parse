@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "./build",
     "allowJs": true,
     "lib": ["es2021"],
-    "module": "commonjs",
     "target": "es2021",
-
+    "declaration": true,
+    "declarationDir": "./build/types",
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
