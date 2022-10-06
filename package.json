@@ -7,6 +7,7 @@
     "import": "./build/esm/index.js",
     "require": "./build/cjs/index.js"
   },
+  "types": "./build/types/index.d.ts",
   "scripts": {
     "build": "tsc --project ./cjs.tsconfig.json && tsc --project ./esm.tsconfig.json",
     "test": "jest",
